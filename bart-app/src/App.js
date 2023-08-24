@@ -5,6 +5,7 @@ import fetcthStationData from './bart';
 import bartstations from './bartstations';
 import {Box, colors, FormControl, InputLabel, MenuItem, Select, createTheme, ThemeProvider} from '@mui/material';
 import { blue } from '@mui/material/colors';
+import { palette } from '@mui/system';
 
 
 function App() {
@@ -14,7 +15,15 @@ function App() {
   const handleChange = (event) => {
     setCurrentStation(event.target.value);
   };
-
+  //white
+  const theme = createTheme({
+    palette: {
+      primary: blue,
+    },
+      secondary: {
+        main: '#ffffff',
+      },
+  });
   
 
 
@@ -25,7 +34,23 @@ function App() {
       <h1>Bart's React App</h1>
       <h3>Stations</h3>
       
-    
+      <ThemeProvider theme={theme}>
+        <FormControl sx={{ m: 1, minWidth: 120, color: palette.secondary }}>
+          <InputLabel sx={{color: palette.primary}} id="demo-simple-select-helper-label">Stations</InputLabel>
+          <Select
+            labelId="demo-simple-select-helper-label"
+            id="demo-simple-select-helper"
+            value={currentStation}
+            label="Stations"
+            onChange={handleChange}
+          >
+            {stations.bartstations.map((station) => (
+              <MenuItem sx={{color: palette.primary}} value={station.name}>{station.full_name}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </ThemeProvider>
+      
       
 
     </div>

@@ -9,3 +9,9 @@
     background-color: #282c34;
     color: white;
 }
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, #demo-simple-select-helper-label, #demo-simple-select-helper, .MuiSvgIcon-root{
+    color: white !important;
+    border-color: white;
+
+    
+}

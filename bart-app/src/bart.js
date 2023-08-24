@@ -20,3 +20,5 @@ const fetcthStationData = async (station) => {
     }
     
 }
+
+export default fetcthStationData;
