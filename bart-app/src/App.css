@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    height: 100vh;
+    height: 100Vh;
     width: 100vw;
     background-color: #282c34;
     color: white;
@@ -14,4 +14,17 @@
     border-color: white;
 
     
+}
+
+.trains-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+    width: 100vw;
+    background-color: #282c34;
+    color: white;
+    border: 1px solid red;
 }
