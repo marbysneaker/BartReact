@@ -68,11 +68,20 @@ function App() {
       <Button variant="contained" onClick={fetchSched}>Submit</Button>
 
       <div className="trains-container">
+      <div className="train-header">
+            <div>destination</div>
+            <div className='time'>Time</div>
+            <div className='direction'>Direction</div>
+            
+          </div>
+
         { currentStationData? 
         currentStationData.root.station[0].etd.map((train) => (
           <div className="train">
-            <h3>{train.destination}</h3>
-            <h4>{train.estimate[0].minutes}</h4>
+            <div className={train.destination}>{train.destination}</div>
+            <div className='time'>{train.estimate[0].minutes}</div>
+            <div className='direction'>{train.estimate[0].direction}</div>
+            
           </div>
         ))
         : <h1>Waiting for data</h1>

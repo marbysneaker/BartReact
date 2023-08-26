@@ -28,3 +28,16 @@
     color: white;
     border: 1px solid red;
 }
+.train, .train-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+    border: 1px solid red;
+}
+.train div, .train-header div{
+    border: 1px solid red;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
