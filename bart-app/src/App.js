@@ -28,12 +28,17 @@ function App() {
   });
   
   const fetchSched = async () => {
+    
+    try {
     const data = await fetcthStationData(currentStation);
     console.log("data",data);
     setCurrentStationData(data);
     console.log("currentStationData",currentStationData.root.station[0].etd);
     console.log("where is my data")
     console.log(currentStation.length)
+    } catch (error) {
+      console.log(error);
+    }
     // let station;
     // currentStationData.root.map((station) => {
     //   console.log("station",station);
@@ -43,6 +48,8 @@ function App() {
 
   console.log(stations);
   console.log(currentStation);
+  console.log("current",currentStationData);
+  console.log("current",currentStationData.root);
 
   return (
     <div className="Main-container">
@@ -75,16 +82,16 @@ function App() {
             
           </div>
 
-        { currentStationData? 
-        currentStationData.root.station[0].etd.map((train) => (
+        { currentStationData.root== undefined?<h1>Waiting for data</h1>
+        
+       
+        : currentStationData.root.station[0].etd.map((train) => (
           <div className="train">
             <div className={train.destination}>{train.destination}</div>
             <div className='time'>{train.estimate[0].minutes}</div>
             <div className='direction'>{train.estimate[0].direction}</div>
             
-          </div>
-        ))
-        : <h1>Waiting for data</h1>
+          </div> ))
         }
 
 
