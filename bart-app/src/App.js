@@ -7,6 +7,7 @@ import bartstations from './bartstations';
 import { Dashboard } from './pages/Dashboard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import  Layout  from './pages/Layout';
+import Login from './pages/Login';
 
 function App() {
   const [stations, setStations] = useState({bartstations})
@@ -45,7 +46,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}/>
-          
+          <Route path='login' element={<Login/>}/>
         
         </Route>
       </Routes>

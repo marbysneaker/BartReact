@@ -20,7 +20,7 @@ const Layout = () => {
             <Link to="/favorites">Favorites</Link>
           </li>
           <li>
-            <Link to="/contact">Sign In</Link>
+            <Link to="/login">Sign In</Link>
           </li>
         </ul>
      

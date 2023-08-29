@@ -1,5 +1,5 @@
 .nav-bar {
-    background-color: #c36363;
+    background-color: #264ECA;
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -8,7 +8,7 @@
     height: 60px;
     align-items: center;
     text-decoration: none;
-
+    
 }
 
 .nav-bar ul{
@@ -22,7 +22,20 @@
     justify-content: space-around;
     align-items: center;
     height: 100%;
-    border: 1px solid black
+    border: 1px solid black;
+    color: aliceblue;
+}
+.nav-bar a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    border-radius: 10px;
+    /* border: 1px solid black; */
+    background-color: #264ECA;
+    transition: background-color 0.5s ease;
 }
 
 
