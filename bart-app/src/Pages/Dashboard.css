@@ -1,0 +1,56 @@
+.Main-container 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    height: 100%;
+    width: 100vw;
+    background-color: #282c34;
+    color: white;
+    border: 1px solid red;
+}
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, #demo-simple-select-helper-label, #demo-simple-select-helper, .MuiSvgIcon-root{
+    color: white !important;
+    border-color: white;
+
+    
+}
+
+.trains-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+    width: 100vw;
+    background-color: #282c34;
+    color: black;
+    border: 1px solid red;
+    background-color: aliceblue;
+    margin-top: 10em;
+}
+.train, .train-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-gap: 10px; */
+    width: 100%;
+   border: .5px solid black;
+}
+
+.train-header {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    
+    background-color: aquamarine;
+}
+.train div, .train-header div{
+    border-left: .25px solid black;
+    padding: 10px 0;
+    margin: 10px 0;
+    height: 3em;
+    
+    text-align: center;
+}

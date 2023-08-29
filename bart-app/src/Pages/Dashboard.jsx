@@ -3,7 +3,7 @@ import {Box, colors, FormControl, InputLabel, MenuItem, Select, createTheme, The
 import { blue } from '@mui/material/colors';
 import { palette } from '@mui/system';
 import { Button } from '@mui/material';
-
+import './Dashboard.css';
 export const Dashboard = (props) => {
   const {stations, currentStation, currentStationData, setCurrentStation, fetchSched} = props;
     //white

@@ -4,9 +4,9 @@ import './App.css';
 import fetcthStationData from './bart';
 import bartstations from './bartstations';
 
-import { Dashboard } from './Pages/Dashboard';
+import { Dashboard } from './pages/Dashboard';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import  Layout  from './pages/Layout';
 
 function App() {
   const [stations, setStations] = useState({bartstations})
@@ -43,8 +43,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}>
-         
+        <Route path='/' element={<Layout/>}>
+          <Route index element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}/>
+          
         
         </Route>
       </Routes>
