@@ -9,6 +9,7 @@
     background-color: #282c34;
     color: white;
     border: 1px solid red;
+    padding-top: 60px;
 }
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, #demo-simple-select-helper-label, #demo-simple-select-helper, .MuiSvgIcon-root{
     color: white !important;
@@ -30,6 +31,7 @@
     border: 1px solid red;
     background-color: aliceblue;
     margin-top: 10em;
+    overflow-y: auto;
 }
 .train, .train-header {
     display: grid;
@@ -45,6 +47,7 @@
     text-align: center;
     
     background-color: aquamarine;
+    
 }
 .train div, .train-header div{
     border-left: .25px solid black;

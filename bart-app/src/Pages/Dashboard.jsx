@@ -22,7 +22,7 @@ export const Dashboard = (props) => {
 
   return (
     <div className="Main-container">
-      <h1>Bart's React App</h1>
+     
       <h3>Stations</h3>
       
       <ThemeProvider theme={theme}>
