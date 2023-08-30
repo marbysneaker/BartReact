@@ -1,33 +1,35 @@
 import React, {useState} from 'react'
-import "./Login.css"
+import "./Signup.css"
 import { Button, TextField } from '@mui/material';
 import UserContext from '../context/AuthContext';
 import { useContext } from 'react';
-import { signIn } from '../context/AuthContext';
-
+import { createUser } from '../context/AuthContext';
 
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
+    const {createUserWithEmailAndPassword} = UserContext;
 
-    const {signInWithEmailAndPassword} = UserContext;
-
-    const handleLogin = () => {
-        signIn(username, password);
+    const handleSignup = () => {
+        createUser(username, password);
     }
+
 
 
     console.log(username);
     console.log(password);
+    
+
   return (
     <div className='login'>
-        <h1>Login</h1>
+        <h1>Sign Up</h1>
         <form className='login-form'>
             <TextField id="outlined-basic" label="Username" variant="outlined" onChange={e=>setUsername(e.target.value)}/>
-            <TextField id="outlined-basic" type='password' label="Password" variant="outlined" onChange={e=>setPassword(e.target.value)} />
-            <Button variant="contained" onClick={handleLogin}>Login</Button>
+            <TextField id="outlined-basic" label="Password" variant="outlined" onChange={e=>setPassword(e.target.value)} />
+            <Button variant="contained" onClick={handleSignup}>Sign Up</Button>
+            <p>Already have an account? <a href="/login">Login</a></p>
         </form>
 
       
