@@ -10,7 +10,7 @@ const Layout = () => {
        
       
         <ul>
-          <li>
+          <li className='logo'>
             <Link to="/">Bart React App</Link>
           </li>
           <li>

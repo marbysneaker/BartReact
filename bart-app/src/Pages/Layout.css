@@ -17,13 +17,14 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    
     display: flex;
-    justify-content: space-around;
     align-items: center;
     height: 100%;
     border: 1px solid black;
     color: aliceblue;
+    flex-direction: row;
+    justify-content: flex-end;
+  
 }
 .nav-bar a {
     text-decoration: none;
@@ -36,6 +37,11 @@
     /* border: 1px solid black; */
     background-color: #264ECA;
     transition: background-color 0.5s ease;
+}
+.logo {
+    position: absolute;
+    left: 0;
+    
 }
 
 
