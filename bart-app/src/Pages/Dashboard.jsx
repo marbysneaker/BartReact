@@ -4,8 +4,14 @@ import { blue } from '@mui/material/colors';
 import { palette } from '@mui/system';
 import { Button } from '@mui/material';
 import './Dashboard.css';
+import { useState } from 'react';
+import { UserAuth } from '../context/AuthContext';
+import { db } from '../firebase';
+import {doc, setDoc} from 'firebase/firestore';
+
 export const Dashboard = (props) => {
   const {stations, currentStation, currentStationData, setCurrentStation, fetchSched} = props;
+  const {user} = UserAuth();
     //white
     const theme = createTheme({
       palette: {
@@ -20,6 +26,17 @@ export const Dashboard = (props) => {
       setCurrentStation(event.target.value);
     };
     console.log(stations);
+
+
+  const addToFavorites = () => {
+    
+    const userRef = doc(db, "users");
+    setDoc(userRef, {
+      favorites: [...user.favorites, currentStation]
+    }, {merge: true})
+  }
+
+
 
   return (
     <div className="Main-container">
@@ -43,6 +60,7 @@ export const Dashboard = (props) => {
         </FormControl>
       </ThemeProvider>
       <Button variant="contained" onClick={fetchSched}>Submit</Button>
+      <Button variant="contained" onClick={addToFavorites}>Add to favorites</Button>
 
       <div className="trains-container">
       <div className="train-header">

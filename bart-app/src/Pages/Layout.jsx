@@ -3,7 +3,22 @@ import { Outlet, Link } from 'react-router-dom'
 import './Layout.css'
 import { UserAuth } from '../context/AuthContext'
 
+
 const Layout = () => {
+    const {user, logOut} = UserAuth();
+    console.log("user in layout",user);
+
+    const handleLogout = async () => {
+        try
+        {
+            await logOut();
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    }
+
   return (
 
     <>
@@ -20,9 +35,14 @@ const Layout = () => {
           <li>
             <Link to="/favorites">Favorites</Link>
           </li>
-          <li>
+          {user?
+            <li onClick={handleLogout}>
+                <Link to="/login"> Sign Out</Link>
+            </li>
+            :
+            <li>
             <Link to="/login">Sign In</Link>
-          </li>
+          </li>}
             <li>
             <Link to="/signup">Sign Up</Link>
             </li>

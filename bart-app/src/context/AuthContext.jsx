@@ -39,7 +39,7 @@ export const AuthContextProvider = ({children}) => {
 
 
                 
-    const signOut = () => {
+    const logOut = () => {
         signOut(auth)
     }
     
@@ -57,7 +57,7 @@ export const AuthContextProvider = ({children}) => {
 
 
     return (
-        <UserContext.Provider value={{createUser, signIn, user, signOut}}>
+        <UserContext.Provider value={{createUser, signIn, user, logOut}}>
             {children}
         </UserContext.Provider>
     )
