@@ -9,7 +9,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import  Layout  from './pages/Layout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-
+import Protectedroute from './pages/ProtectedRoute';
+import Favorites from './pages/Favorites';
 function App() {
   const [stations, setStations] = useState({bartstations})
   const [currentStation, setCurrentStation] = useState('12th');
@@ -49,6 +50,8 @@ function App() {
           <Route index element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='signup' element={<Signup/>}/>
+          <Route path='favorites' element={<Protectedroute><Dashboard/></Protectedroute>}/>
+          
         
         </Route>
       </Routes>

@@ -14,8 +14,21 @@ const Login = () => {
 
     const {signInWithEmailAndPassword} = UserContext;
 
-    const handleLogin = () => {
-        signIn(username, password);
+    const handleLogin = async () => {
+        try
+        {
+            await signIn(username, password);
+            setUsername('');
+            setPassword('');
+
+
+        }
+        catch(error)
+        {
+            setError(error.message);
+            console.log(error);
+        }
+
     }
 
 

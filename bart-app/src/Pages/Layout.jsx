@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import './Layout.css'
+import { UserAuth } from '../context/AuthContext'
 
 const Layout = () => {
   return (
