@@ -7,7 +7,7 @@ import './Dashboard.css';
 import { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { db } from '../firebase';
-import {doc, setDoc} from 'firebase/firestore';
+import {doc, setDoc, addDoc, updateDoc, arrayUnion} from 'firebase/firestore';
 
 export const Dashboard = (props) => {
   const {stations, currentStation, currentStationData, setCurrentStation, fetchSched} = props;
@@ -28,14 +28,26 @@ export const Dashboard = (props) => {
     console.log(stations);
 
 
-  const addToFavorites = () => {
+  const addToFavorites = async () => {
     
-    const userRef = doc(db, "users");
-    setDoc(userRef, {
-      favorites: [...user.favorites, currentStation]
-    }, {merge: true})
+    const userRef = doc(db, "users", user.email);
+    console.log(userRef);
+    try {
+      await updateDoc(userRef, {
+          favorites: arrayUnion(currentStation)
+      });
+  } catch (error) {
+      console.error("Error adding to favorites:", error);
+  } 
+    // setDoc(userRef, {
+    //   favorites: [...user.favorites, currentStation]
+    // }, {merge: true})
   }
+    
 
+
+
+  console.log(user);
 
 
   return (
@@ -60,7 +72,8 @@ export const Dashboard = (props) => {
         </FormControl>
       </ThemeProvider>
       <Button variant="contained" onClick={fetchSched}>Submit</Button>
-      <Button variant="contained" onClick={addToFavorites}>Add to favorites</Button>
+      {user? <Button variant="contained" onClick={addToFavorites}>Add to favorites</Button>:
+      null}
 
       <div className="trains-container">
       <div className="train-header">
@@ -70,7 +83,7 @@ export const Dashboard = (props) => {
             
           </div>
 
-        { currentStationData.root== undefined?<h1>Waiting for data</h1>
+        { currentStationData.root== undefined || currentStationData.root.station[0].etd == undefined ?<h1>Waiting for data</h1>
         
        
         : currentStationData.root.station[0].etd.map((train) => (
