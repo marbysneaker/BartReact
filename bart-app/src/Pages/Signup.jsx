@@ -3,16 +3,29 @@ import "./Signup.css"
 import { Button, TextField } from '@mui/material';
 import { useContext } from 'react';
 import { UserAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
-const Login = () => {
+const Signup = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const {createUser, user} = UserAuth();
+    const navig = useNavigate();
 
-    const handleSignup = () => {
-        createUser(username, password);
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        try
+        { await createUser(username, password);
+            navig('/');
+        }
+        catch(error)
+        {
+            setError(error.message);
+            console.log(error);
+        }
+
+
     }
 
 
@@ -36,4 +49,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Signup
