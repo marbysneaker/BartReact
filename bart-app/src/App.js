@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Protectedroute from './pages/ProtectedRoute';
 import Favorites from './pages/Favorites';
+import { AuthContextProvider } from './context/AuthContext';
+
 function App() {
   const [stations, setStations] = useState({bartstations})
   const [currentStation, setCurrentStation] = useState('12th');
@@ -44,18 +46,20 @@ function App() {
   console.log("current",currentStationData.root);
 
   return (
-    <BrowserRouter>
+
+
+    <AuthContextProvider>
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path='signup' element={<Signup/>}/>
-          <Route path='favorites' element={<Protectedroute><Dashboard/></Protectedroute>}/>
+          <Route path='favorites' element={<Protectedroute><Favorites/></Protectedroute>}/>
           
         
         </Route>
       </Routes>
-    </BrowserRouter>
+    </AuthContextProvider>
     
   );
 }

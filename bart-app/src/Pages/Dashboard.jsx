@@ -19,10 +19,11 @@ export const Dashboard = (props) => {
   const handleChange = (event) => {
       setCurrentStation(event.target.value);
     };
+    console.log(stations);
 
   return (
     <div className="Main-container">
-     
+      
       <h3>Stations</h3>
       
       <ThemeProvider theme={theme}>

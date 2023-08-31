@@ -1,9 +1,8 @@
 import React, {useState} from 'react'
 import "./Login.css"
 import { Button, TextField } from '@mui/material';
-import UserContext from '../context/AuthContext';
+import { UserAuth } from '../context/AuthContext';
 import { useContext } from 'react';
-import { signIn } from '../context/AuthContext';
 
 
 
@@ -11,9 +10,7 @@ const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-
-    const {signInWithEmailAndPassword} = UserContext;
-
+    const {signIn, user} = UserAuth();
     const handleLogin = async () => {
         try
         {

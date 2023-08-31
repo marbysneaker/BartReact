@@ -1,16 +1,15 @@
 import React, {useState} from 'react'
 import "./Signup.css"
 import { Button, TextField } from '@mui/material';
-import UserContext from '../context/AuthContext';
 import { useContext } from 'react';
-import { createUser } from '../context/AuthContext';
+import { UserAuth } from '../context/AuthContext';
 
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
-    const {createUserWithEmailAndPassword} = UserContext;
+    const {createUser, user} = UserAuth();
 
     const handleSignup = () => {
         createUser(username, password);
