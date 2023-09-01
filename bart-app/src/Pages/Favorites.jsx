@@ -3,7 +3,7 @@ import './Favorites.css'
 import { UserAuth } from '../context/AuthContext'
 import {doc, getDoc} from 'firebase/firestore'
 import {db} from '../firebase'
-import {bartstations} from '../bartstations'
+import bartstations from '../bartstations'
 import fetchStationData from '../bart'
 
 
@@ -19,7 +19,7 @@ const Favorites = () => {
     try {
     const data = await fetchStationData(currentStation);
     console.log("data",data);
-    addStation(data);
+    // addStation(data);
     
     // console.log("currentStationData",currentStationData.root.station[0].etd);
     console.log("where is my data")
@@ -59,24 +59,34 @@ const Favorites = () => {
         }
         getUser();
         favorites.map((station) => {
+          console.log("station",station);
           fetchSched(station);
+        })
+        console.log("bartstations");
+        bartstations.map((station) => {
+          favorites.map((fav) => {
+            if(station.name == fav)
+            {
+              console.log("full name",station.full_name);
+            }
+          })
         })
 
     },[])
 
     console.log("all stations", stationData);
-    
+    console.log(bartstations)
+    console.log("favorites",favorites);
+
 
   return (
     <div className='favorites'>
       <h1>Favorites</h1>
-      {favorites.map((station) => {
-        return(
-            <div className='favorite'>
-                {station}
-            </div>
-        )
-      })}
+     {favorites.map((station) => {
+        return <div>{station}</div>
+
+     }
+      )}
         
     </div>
   )
