@@ -3,6 +3,7 @@ import "./Login.css"
 import { Button, TextField } from '@mui/material';
 import { UserAuth } from '../context/AuthContext';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,12 +12,16 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const {signIn, user} = UserAuth();
+    const navig = useNavigate();
     const handleLogin = async () => {
         try
         {
             await signIn(username, password);
             setUsername('');
             setPassword('');
+            navig('/');
+            
+
 
 
         }
