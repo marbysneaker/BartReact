@@ -14,69 +14,77 @@ const Favorites = () => {
     const [stationData, setStationData] = useState([]);
 
       
-  const fetchSched = async (currentStation) => {
-    
-    try {
-    const data = await fetchStationData(currentStation);
-    console.log("data",data);
-    // addStation(data);
-    
-    // console.log("currentStationData",currentStationData.root.station[0].etd);
-    console.log("where is my data")
-    
-    } catch (error) {
-      console.log(error);
-    }
-    // let station;
-    // currentStationData.root.map((station) => {
-    //   console.log("station",station);
-    // })
-  }
-
-  const addStation = (data) => {
-    setStationData([...stationData, 
-      {
-        name: data.root.station[0].name,
-        etd: data.root.station[0].etd
-      
+    const fetchSched = async () => {
+      const allData = []
+      let station;
+      for(station in favorites) {
+        console.log("station",station);
+        try {
+          const data = await fetchStationData(favorites[station]);
+          console.log("data",data);
+          allData.push(data);
+          // setCurrentStationData(data);
+          // console.log("currentStationData",currentStationData.root.station[0].etd);
+          console.log("where is my data")
+          // console.log(currentStation.length)
+          } catch (error) {
+            console.log(error);
+          }
       }
-      ]);
-      console.log("stationData",stationData);
-      
-  }
+      setStationData(allData);
+      console.log("allData",allData);
+
+      // try {
+      //   const docRef = doc(db, "users", user.email);
+      //   const docSnap = await getDoc(docRef);
+      //   // ...rest of the code
+      //   if (docSnap.exists()) {
+      //     setFavorites(docSnap.data().favorites);
+      //     console.log("Document data:", docSnap.data());
+      // } else {
+      //     // doc.data() will be undefined in this case
+      //     console.log("No such document!");
+      // }
+      // } catch (error) {
+      //   console.error("An error occurred:", error);
+      // }
+  
+    }
+
+    const getUser = async () => {
+      try {
+        const docRef = doc(db, "users", user.email);
+        const docSnap = await getDoc(docRef);
+        // ...rest of the code
+        if (docSnap.exists()) {
+          setFavorites(docSnap.data().favorites);
+          console.log("Document data:", docSnap.data());
+      } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+      }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+  
+    }
+
+  
 
     useEffect(()=>{
-        const getUser = async () => {
-            const docRef = doc(db, "users", user.email);
-            const docSnap = await getDoc(docRef);
-            if (docSnap.exists()) {
-                setFavorites(docSnap.data().favorites);
-                console.log("Document data:", docSnap.data());
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
+        
+        const fetchData = async () => {
+          await getUser();
+          await fetchSched();
         }
-        getUser();
-        favorites.map((station) => {
-          console.log("station",station);
-          fetchSched(station);
-        })
-        console.log("bartstations");
-        bartstations.map((station) => {
-          favorites.map((fav) => {
-            if(station.name == fav)
-            {
-              console.log("full name",station.full_name);
-            }
-          })
-        })
+
+        fetchData();
 
     },[])
 
-    console.log("all stations", stationData);
-    console.log(bartstations)
-    console.log("favorites",favorites);
+    // console.log("all stations", stationData);
+    // console.log(bartstations)
+    // console.log("favorites",favorites);
 
 
   return (

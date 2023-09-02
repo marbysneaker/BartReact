@@ -6,7 +6,7 @@ import { UserAuth } from '../context/AuthContext'
 
 const Layout = () => {
     const {user, logOut} = UserAuth();
-    console.log("user in layout",user);
+    // console.log("user in layout",user);
 
     const handleLogout = async () => {
         try
