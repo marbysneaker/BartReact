@@ -7,3 +7,20 @@
     color: aliceblue;
     font-weight: bolder;
 }
+
+.favorites-station-name {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: white;
+}
+
+.favorites-trains-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100vw;
+    background-color: #282c34;
+    overflow-y: auto;
+}

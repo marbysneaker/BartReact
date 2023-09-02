@@ -15,41 +15,23 @@ const Favorites = () => {
 
       
     const fetchSched = async () => {
-      const allData = []
-      let station;
-      for(station in favorites) {
-        console.log("station",station);
+      let allData = [];
+  
+      for (let station of favorites) {
         try {
-          const data = await fetchStationData(favorites[station]);
-          console.log("data",data);
-          allData.push(data);
-          // setCurrentStationData(data);
-          // console.log("currentStationData",currentStationData.root.station[0].etd);
-          console.log("where is my data")
-          // console.log(currentStation.length)
-          } catch (error) {
-            console.log(error);
-          }
+          const data = await fetchStationData(station);
+          let trainData = { name: data.root.station[0].name, trains: data.root.station[0].etd };
+          allData.push(trainData);
+        } catch (error) {
+          console.error(error);
+        }
       }
       setStationData(allData);
-      console.log("allData",allData);
+      console.log("all data", allData);
+    };
 
-      // try {
-      //   const docRef = doc(db, "users", user.email);
-      //   const docSnap = await getDoc(docRef);
-      //   // ...rest of the code
-      //   if (docSnap.exists()) {
-      //     setFavorites(docSnap.data().favorites);
-      //     console.log("Document data:", docSnap.data());
-      // } else {
-      //     // doc.data() will be undefined in this case
-      //     console.log("No such document!");
-      // }
-      // } catch (error) {
-      //   console.error("An error occurred:", error);
-      // }
-  
-    }
+
+
 
     const getUser = async () => {
       try {
@@ -90,11 +72,27 @@ const Favorites = () => {
   return (
     <div className='favorites'>
       <h1>Favorites</h1>
-     {favorites.map((station) => {
-        return <div>{station}</div>
+     {stationData.map((station)=>{
 
-     }
-      )}
+        return(
+          <div className="favorites-trains-container">
+            <div className="favorites-train-header">
+                <div className='favorites-station-name'>{station.name}</div>
+                
+              </div>
+              {station.trains.map((train)=>{
+                return(
+                  <div className="train">
+                    <div>{train.destination}</div>
+                    <div className='time'>{train.estimate[0].minutes}</div>
+                    <div className='direction'>{train.estimate[0].direction}</div>
+                    
+                  </div>
+                )
+              })}
+            </div>
+        )
+      })}
         
     </div>
   )

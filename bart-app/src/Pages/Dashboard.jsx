@@ -22,10 +22,14 @@ export const Dashboard = (props) => {
         },
     });
 
+
+
   const handleChange = (event) => {
       setCurrentStation(event.target.value);
     };
-    console.log(stations);
+    // console.log(stations);
+
+
 
 
   const addToFavorites = async () => {
@@ -47,7 +51,7 @@ export const Dashboard = (props) => {
 
 
 
-  console.log(user);
+  // console.log(user);
 
 
   return (
