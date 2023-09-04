@@ -10,7 +10,7 @@
 
 .favorites-station-name {
     font-size: 2em;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
     color: white;
 }
 
@@ -20,7 +20,12 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 100vw;
+    width: 80%;
     background-color: #282c34;
     overflow-y: auto;
+    padding-top: 5em;
+    border-radius: 20px;
+    overflow-x: hidden;
+
+
 }
