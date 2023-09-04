@@ -56,8 +56,11 @@ const Favorites = () => {
     useEffect(()=>{
         
         const fetchData = async () => {
-          await getUser();
-          await fetchSched();
+          if (user && user.email) {
+            await getUser();
+            await fetchSched();
+          }
+          
         }
 
         fetchData();
