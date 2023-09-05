@@ -48,8 +48,9 @@ function App() {
 
   return (
 
-
+    
     <AuthContextProvider>
+      
       <Routes>
         <Route path='/' element={<Layout/>}>
           <Route index element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}/>

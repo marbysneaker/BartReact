@@ -3,7 +3,13 @@
     flex-direction: column; /* Stack children vertically */
     height: 100vh;          /* Make root take up the full viewport height */
     overflow: hidden;
-    background: linear-gradient(45deg, #102eff, #d2379b);       /* In case the content in main-container is too much, it won't overflow */
+    /* background: linear-gradient(45deg, #102eff, #d2379b);       */
+    background: linear-gradient(to right, #3498db, #000000);
+
+    
 }
+
+
+  
 
 
