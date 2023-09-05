@@ -3,9 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: calc(100% - 60px);
     color: aliceblue;
     font-weight: bolder;
+    margin-top: 5em;
+    overflow: auto;
 }
 
 .favorites-station-name {
@@ -26,6 +28,7 @@
     padding-top: 5em;
     border-radius: 20px;
     overflow-x: hidden;
+    padding-top: 2em;
 
 
 }

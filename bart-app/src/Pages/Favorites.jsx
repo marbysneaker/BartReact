@@ -14,42 +14,85 @@ const Favorites = () => {
     const [stationData, setStationData] = useState([]);
 
       
+    // const fetchSched = async () => {
+    //   let allData = [];
+  
+    //   for (let station of favorites) {
+    //     try {
+    //       const data = await fetchStationData(station);
+    //       let trainData = { name: data.root.station[0].name, trains: data.root.station[0].etd };
+    //       allData.push(trainData);
+    //     } catch (error) {
+    //       console.error(error);
+    //     }
+    //   }
+    //   setStationData(allData);
+    //   console.log("all data", allData);
+    // };
+
     const fetchSched = async () => {
-      let allData = [];
-  
-      for (let station of favorites) {
-        try {
-          const data = await fetchStationData(station);
-          let trainData = { name: data.root.station[0].name, trains: data.root.station[0].etd };
-          allData.push(trainData);
-        } catch (error) {
-          console.error(error);
+            if (!favorites || favorites.length === 0) return;
+        
+            try {
+              const allData = await Promise.all(
+                favorites.map(async (station) => {
+                  const data = await fetchStationData(station);
+                  if (data.root && data.root.station[0]) {
+                    return {
+                      name: data.root.station[0].name,
+                      trains: data.root.station[0].etd,
+                    };
+                  }
+                  return null;
+                })
+              );
+        
+              // Remove null values
+              const filteredData = allData.filter(Boolean);
+              setStationData(filteredData);
+            } catch (error) {
+              console.error(error);
+            }
+          };
+
+    
+
+      const getUser = async () => {
+    try {
+      const docRef = doc(db, 'users', user.email);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const favoritesData = docSnap.data().favorites;
+        if (favoritesData) {
+          setFavorites(favoritesData);
         }
-      }
-      setStationData(allData);
-      console.log("all data", allData);
-    };
-
-
-
-
-    const getUser = async () => {
-      try {
-        const docRef = doc(db, "users", user.email);
-        const docSnap = await getDoc(docRef);
-        // ...rest of the code
-        if (docSnap.exists()) {
-          setFavorites(docSnap.data().favorites);
-          console.log("Document data:", docSnap.data());
       } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
+        console.log('No such document!');
       }
-      } catch (error) {
-        console.error("An error occurred:", error);
-      }
-  
+    } catch (error) {
+      console.error('An error occurred:', error);
     }
+  };
+
+
+    // const getUser = async () => {
+    //   try {
+    //     const docRef = doc(db, "users", user.email);
+    //     const docSnap = await getDoc(docRef);
+    //     // ...rest of the code
+    //     if (docSnap.exists()) {
+    //       setFavorites(docSnap.data().favorites);
+    //       console.log("Document data:", docSnap.data());
+    //   } else {
+    //       // doc.data() will be undefined in this case
+    //       console.log("No such document!");
+    //   }
+    //   } catch (error) {
+    //     console.error("An error occurred:", error);
+    //   }
+  
+    // }
 
   
 
@@ -70,6 +113,7 @@ const Favorites = () => {
     // console.log("all stations", stationData);
     // console.log(bartstations)
     console.log("favorites",favorites);
+    console.log("users", user);
 
 
   return (

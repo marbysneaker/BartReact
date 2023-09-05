@@ -2,6 +2,7 @@ import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import './Layout.css'
 import { UserAuth } from '../context/AuthContext'
+import brie from '../brie.png'
 
 
 const Layout = () => {
@@ -27,7 +28,8 @@ const Layout = () => {
       
         <ul>
           <li className='logo'>
-            <Link to="/">Bart React App</Link>
+            
+                <Link to="/"><img src={brie} alt=""/></Link>
           </li>
           <li>
             <Link to="/">Home</Link>
@@ -43,9 +45,9 @@ const Layout = () => {
             <li>
             <Link to="/login">Sign In</Link>
           </li>}
-            <li>
+            {user?null: <li>
             <Link to="/signup">Sign Up</Link>
-            </li>
+            </li>}
         </ul>
      
         </div>
