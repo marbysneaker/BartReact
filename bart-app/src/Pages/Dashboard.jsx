@@ -57,49 +57,60 @@ export const Dashboard = (props) => {
   return (
     <div className="Main-container">
       
-      <h3>Stations</h3>
+      <h3>Select Station</h3>
+
+      <div className="stations-container">
       
-      <ThemeProvider theme={theme}>
-        <FormControl sx={{ m: 1, minWidth: 120, color: palette.secondary }}>
-          <InputLabel sx={{color: palette.primary}} id="demo-simple-select-helper-label">Stations</InputLabel>
-          <Select
-            labelId="demo-simple-select-helper-label"
-            id="demo-simple-select-helper"
-            value={currentStation}
-            label="Stations"
-            onChange={handleChange}
-          >
-            {stations.bartstations.map((station) => (
-              <MenuItem value={station.name}>{station.full_name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </ThemeProvider>
-      <Button variant="contained" onClick={fetchSched}>Submit</Button>
-      {user? <Button variant="contained" onClick={addToFavorites}>Add to favorites</Button>:
-      null}
-      <div className="train-header">
-            <div>destination</div>
-            <div className='time'>Time</div>
-            <div className='direction'>Direction</div>
-            
-          </div>
-      <div className="trains-container">
-      
-
-        { currentStationData.root== undefined || currentStationData.root.station[0].etd == undefined ?<h1>Waiting for data</h1>
-        
-       
-        : currentStationData.root.station[0].etd.map((train) => (
-          <div className="train">
-            <div className={train.destination}>{train.destination}</div>
-            <div className='time'>{train.estimate[0].minutes}</div>
-            <div className='direction'>{train.estimate[0].direction}</div>
-            
-          </div> ))
-        }
+          <ThemeProvider theme={theme}>
+            <FormControl sx={{ m: 1, minWidth: 120, color: palette.secondary }}>
+              <InputLabel sx={{color: palette.primary}} id="demo-simple-select-helper-label">Stations</InputLabel>
+              <Select
+                labelId="demo-simple-select-helper-label"
+                id="demo-simple-select-helper"
+                value={currentStation}
+                label="Stations"
+                onChange={handleChange}
+              >
+                {stations.bartstations.map((station) => (
+                  <MenuItem value={station.name}>{station.full_name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </ThemeProvider>
 
 
+          <Button variant="contained" onClick={fetchSched}>Submit</Button>
+
+          
+          {user? <Button variant="contained" onClick={addToFavorites}>Add to favorites</Button>:
+          null}
+
+      </div>
+
+      <div className="schedule-container">
+              <div className="train-header">
+                    <div>destination</div>
+                    <div className='time'>Time</div>
+                    <div className='direction'>Direction</div>
+                    
+              </div>
+              <div className="trains-container">
+              
+
+                { currentStationData.root== undefined || currentStationData.root.station[0].etd == undefined ?<h1>Waiting for data</h1>
+                
+              
+                : currentStationData.root.station[0].etd.map((train) => (
+                  <div className={`train ${train.destination}`} >
+                    <div >{train.destination}</div>
+                    <div className='time'>{train.estimate[0].minutes}</div>
+                    <div className='direction'>{train.estimate[0].direction}</div>
+                    
+                  </div> ))
+                }
+
+
+              </div>
       </div>
 
       

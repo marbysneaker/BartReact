@@ -1,15 +1,11 @@
 .Main-container 
 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* justify-content: center; */
+    display: grid;
+    grid-template-rows: 10%  30% 60%;
     height: 100%;
-    width: 100vw;
-    /* background-color: #282c34; */
+    text-align: center; 
+    align-items: center;
     color: white;
-    border: 1px solid red;
-    padding-top: 60px;
 }
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, #demo-simple-select-helper-label, #demo-simple-select-helper, .MuiSvgIcon-root{
     color: white !important;
@@ -18,6 +14,9 @@
     
 }
 
+.Main-container h3 {
+    padding-top: 8em;
+}
 .Main-container button {
     /* background-color: #1a3b5d;
     color: white;
@@ -34,6 +33,35 @@
     margin-top: 2em;
 }
 
+.stations-container {
+    grid: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    width: 80%; 
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    padding: auto;
+
+    
+    
+}
+.schedule-container{
+    grid: 2;
+    display: grid;
+    grid-template-rows: 15% 80%;
+    width: 80%;
+    padding: auto;
+    margin: auto;
+    height: 100%;
+    text-align: center;
+  
+}
+
+
 .trains-container
 {
     display: flex;
@@ -41,11 +69,13 @@
     gap: 20px;
     padding: 20px;
     background-color: #f4f4f4;
-    height: 15em;
-    width: 80%;
+    /* height: 15em; */
+    width: 100%;
     overflow-y: auto;
     border-radius: 0 0 5px 5px;
 }
+
+
 .train, .train-header {
     
     display: flex;
@@ -55,19 +85,21 @@
   
   background-color: #1a3b5d;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ border-radius: 10px;
    
 }
 
 .train-header {
+    grid: 1;
     font-weight: bold;
     font-size: 1em;
     text-align: center;
     
     background-color: #59788e;
     margin-top: 3em;
-    width: 80%;
+    width: 100%;
     border-radius: 5px 5px 0 0;
-    height: .3em;
+    height: auto;
 
     
 }
@@ -76,4 +108,10 @@
   margin: 0 10px;
   text-align: center;
 
+
+}
+
+.Antioch {
+    background: linear-gradient(to left, rgb(147, 147, 1), #1a3b5d);
+    
 }
