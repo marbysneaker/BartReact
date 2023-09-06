@@ -21,17 +21,10 @@
 .trains-container
 {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100% !important;
-    width: 100vw;
-    background-color: #282c34;
-    color: black;
-    border: 1px solid red;
-    background-color: aliceblue;
-    margin-top: 10em;
-    overflow-y: auto;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 .train, .train-header {
     display: grid;
