@@ -18,6 +18,22 @@
     
 }
 
+.Main-container button {
+    /* background-color: #1a3b5d;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 5px;
+    margin: 5px;
+    
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.5s ease; */
+
+    margin-top: 2em;
+}
+
 .trains-container
 {
     display: flex;
@@ -25,10 +41,10 @@
     gap: 20px;
     padding: 20px;
     background-color: #f4f4f4;
-    height: 20em;
+    height: 15em;
     width: 80%;
-    margin-top: 3em;
     overflow-y: auto;
+    border-radius: 0 0 5px 5px;
 }
 .train, .train-header {
     
@@ -36,7 +52,7 @@
   align-items: center;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  
   background-color: #1a3b5d;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    
@@ -44,10 +60,15 @@
 
 .train-header {
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1em;
     text-align: center;
     
-    background-color: aquamarine;
+    background-color: #59788e;
+    margin-top: 3em;
+    width: 80%;
+    border-radius: 5px 5px 0 0;
+    height: .3em;
+
     
 }
 .train div, .train-header div{

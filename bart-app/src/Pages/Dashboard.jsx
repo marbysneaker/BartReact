@@ -78,14 +78,14 @@ export const Dashboard = (props) => {
       <Button variant="contained" onClick={fetchSched}>Submit</Button>
       {user? <Button variant="contained" onClick={addToFavorites}>Add to favorites</Button>:
       null}
-
-      <div className="trains-container">
       <div className="train-header">
             <div>destination</div>
             <div className='time'>Time</div>
             <div className='direction'>Direction</div>
             
           </div>
+      <div className="trains-container">
+      
 
         { currentStationData.root== undefined || currentStationData.root.station[0].etd == undefined ?<h1>Waiting for data</h1>
         
