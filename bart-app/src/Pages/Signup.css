@@ -1,21 +1,25 @@
-.login {
+.signup {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    /* background-color: aliceblue; */
 }
-.login-form {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50%;
-    width: 50%;
-    /* border: 1px solid black; */
+   
+    background-color: aliceblue;
     border-radius: 10px;
-    background-color: lightblue;
-    color: white;
-    row-gap: 1em;
+    padding-bottom: 2em;
+}
+
+.signup .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, #demo-simple-select-helper-label, #demo-simple-select-helper, .MuiSvgIcon-root{
+    color: black;
+    border-color: black;
+
     
 }
