@@ -7,7 +7,7 @@ import './Dashboard.css';
 import { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { db } from '../firebase';
-import {doc, setDoc, addDoc, updateDoc, arrayUnion} from 'firebase/firestore';
+import {doc, setDoc, addDoc, updateDoc, arrayUnion, connectFirestoreEmulator} from 'firebase/firestore';
 
 export const Dashboard = (props) => {
   const {stations, currentStation, currentStationData, setCurrentStation, fetchSched} = props;
@@ -51,7 +51,8 @@ export const Dashboard = (props) => {
 
 
 
-  // console.log(user);
+    console.log("current station", currentStation);
+    // console.log("sample", currentStation[0].estimate[0]);
 
 
   return (
@@ -97,11 +98,11 @@ export const Dashboard = (props) => {
               <div className="trains-container">
               
 
-                { currentStationData.root== undefined || currentStationData.root.station[0].etd == undefined ?<h1>Waiting for data</h1>
+                { currentStationData.root== undefined || currentStationData.root.station[0].etd == undefined ?<h1 className='waiting'>Waiting for data</h1>
                 
               
                 : currentStationData.root.station[0].etd.map((train) => (
-                  <div className={`train ${train.destination}`} >
+                  <div className={`train ${train.estimate[0].color}`} >
                     <div >{train.destination}</div>
                     <div className='time'>{train.estimate[0].minutes}</div>
                     <div className='direction'>{train.estimate[0].direction}</div>

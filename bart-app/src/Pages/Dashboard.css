@@ -7,7 +7,7 @@
     align-items: center;
     color: white;
 }
-.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, #demo-simple-select-helper-label, #demo-simple-select-helper, .MuiSvgIcon-root{
+.Main-container .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, .Main-container #demo-simple-select-helper-label, .Main-container #demo-simple-select-helper, .Main-container .MuiSvgIcon-root{
     color: white;
     border-color: white;
 
@@ -81,7 +81,7 @@
     display: flex;
   align-items: center;
   padding: 20px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   
   background-color: #1a3b5d;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -111,7 +111,43 @@
 
 }
 
-.Antioch {
+.YELLOW {
     background: linear-gradient(to left, rgb(147, 147, 1), #1a3b5d);
     
 }
+
+.GREEN {
+    background: linear-gradient(to left, rgb(2, 122, 2), #1a3b5d);
+    
+}
+
+.RED {
+    background: linear-gradient(to left, rgb(255, 0, 0), #1a3b5d);
+    
+}
+
+.BLUE {
+    background: linear-gradient(to left, rgb(0, 0, 255), #1a3b5d);
+    
+}
+
+.ORANGE {
+    background: linear-gradient(to left, rgb(255, 128, 0), #1a3b5d);
+    
+}
+
+
+
+.waiting {
+    color: red;
+    
+}
+
+/* 
+yellow = antioch, millbrae/sfo
+blue dublin/pleasanton, daly city
+orange = berrysessa, richmond
+greenline = fremont, daly city #339933
+redline = richmond, millbrae/sfo
+beigeline = oakland airport */
+
