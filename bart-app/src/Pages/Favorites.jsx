@@ -61,9 +61,11 @@ const Favorites = () => {
     try {
       const docRef = doc(db, 'users', user.email);
       const docSnap = await getDoc(docRef);
+      console.log("doc snap", docSnap);
 
       if (docSnap.exists()) {
         const favoritesData = docSnap.data().favorites;
+        console.log("favorites data", favoritesData);
         if (favoritesData) {
           setFavorites(favoritesData);
         }
@@ -99,9 +101,12 @@ const Favorites = () => {
     useEffect(()=>{
         
         const fetchData = async () => {
-          if (user && user.email) {
+          if (user || user.email) {
+            console.log("trigger1")
             await getUser();
+            console.log("trigger2")
             await fetchSched();
+            console.log("trigger3")
           }
           
         }

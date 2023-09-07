@@ -30,7 +30,7 @@
     cursor: pointer;
     transition: background-color 0.5s ease; */
 
-    margin-top: 2em;
+    /* margin-top: 2em; */
 }
 
 .stations-container {
@@ -52,7 +52,7 @@
 .schedule-container{
     grid: 2;
     display: grid;
-    grid-template-rows: 15% 80%;
+    grid-template-rows: 20% 80%;
     width: 80%;
     padding: auto;
     margin: auto;
