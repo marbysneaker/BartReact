@@ -5,4 +5,22 @@
     justify-content: center;
     height: 100vh;
     color: white;
+    overflow-y: auto;
+}
+
+.favorites-stations-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    width:100%;
+    height: 80%;
+    overflow-y: auto;
+}
+.favorites-station {
+   height: 10em;
+   padding: 30px;
+   background-color: #f4f4f4;
+   color: black;
+   margin: 2em;
+   border-radius: 10px;
 }
