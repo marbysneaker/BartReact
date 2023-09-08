@@ -7,7 +7,7 @@
     color: aliceblue;
     font-weight: bolder;
     margin-top: 5em;
-    overflow: auto;
+    overflow: auto!important;
 }
 
 .favorites-station-name {

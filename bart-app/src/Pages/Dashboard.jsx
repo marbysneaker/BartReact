@@ -61,7 +61,7 @@ export const Dashboard = (props) => {
       <h3>Select Station</h3>
 
       <div className="stations-container">
-      
+          <div className='dropdown'>
           <ThemeProvider theme={theme}>
             <FormControl sx={{ m: 1, minWidth: 120, color: palette.secondary }}>
               <InputLabel sx={{color: palette.primary}} id="demo-simple-select-helper-label">Stations</InputLabel>
@@ -78,6 +78,7 @@ export const Dashboard = (props) => {
               </Select>
             </FormControl>
           </ThemeProvider>
+          </div>
 
 
           <Button variant="contained" onClick={fetchSched}>Submit</Button>
