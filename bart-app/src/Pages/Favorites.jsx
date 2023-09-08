@@ -123,8 +123,10 @@ const Favorites = () => {
         {loadingUser ? (
             <div>Loading...</div>
         ) : (
-            <>
+            <>  <div className='favorites-header'>
                 <h1>Favorites</h1>
+                </div>
+                <div className='favorites-stations-container'>
                 {stationData.map((station) => {
                     return (
                         <React.Fragment key={station.name}>
@@ -135,14 +137,16 @@ const Favorites = () => {
                                 {Array.isArray(station.trains) && station.trains.map((train) => {
                                     return (
                                         <div className="train" key={train.destination}>
-                                            <div>{train.destination}</div>
-                                            {/* Check if train.estimate is defined and has at least one item */}
-                                            {train.estimate && train.estimate[0] && (
-                                                <>
-                                                    <div className='time'>{train.estimate[0].minutes}</div>
-                                                    <div className='direction'>{train.estimate[0].direction}</div>
-                                                </>
-                                            )}
+                                          <div>{train.destination}</div>
+                                           
+                                        {train.estimate && train.estimate[0] ? (
+                                          <>
+                                            <div className='time'>{train.estimate[0].minutes}</div>
+                                            <div className='direction'>{train.estimate[0].direction}</div>
+                                          </>
+                                        ) : (
+                                          <div className='nodata'>No data</div>
+                                        )}
                                         </div>
                                     );
                                 })}
@@ -150,6 +154,7 @@ const Favorites = () => {
                         </React.Fragment>
                     );
                 })}
+                </div>
             </>
         )}
     </div>
