@@ -116,42 +116,45 @@ const Favorites = () => {
           fetchSched();
       }
   }, [favorites]);
+  
 
   return (
     <div className='favorites'>
-      {loadingUser ? <div>Loading...</div> : 
-      <>
-      <h1>Favorites</h1>
-      {stationData.map((station)=>{
- 
-         return(
-           <>
-           
-           <div className='favorites-station-name'>{station.name}</div>
-           
-           
- 
-           <div className="favorites-trains-container">
-            
-               {station.trains.map((train)=>{
-                 return(
-                   <div className="train">
-                     <div>{train.destination}</div>
-                     <div className='time'>{train.estimate[0].minutes}</div>
-                     <div className='direction'>{train.estimate[0].direction}</div>
-                     
-                   </div>
-                 )
-               })}
-             </div>
-             </>
-         )
-       })}
-        </>
-      }
-        
+        {loadingUser ? (
+            <div>Loading...</div>
+        ) : (
+            <>
+                <h1>Favorites</h1>
+                {stationData.map((station) => {
+                    return (
+                        <React.Fragment key={station.name}>
+                            <div className='favorites-station-name'>{station.name}</div>
+                            
+                            <div className="favorites-trains-container">
+                                {/* Check if station.trains is defined and is an array before mapping */}
+                                {Array.isArray(station.trains) && station.trains.map((train) => {
+                                    return (
+                                        <div className="train" key={train.destination}>
+                                            <div>{train.destination}</div>
+                                            {/* Check if train.estimate is defined and has at least one item */}
+                                            {train.estimate && train.estimate[0] && (
+                                                <>
+                                                    <div className='time'>{train.estimate[0].minutes}</div>
+                                                    <div className='direction'>{train.estimate[0].direction}</div>
+                                                </>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </React.Fragment>
+                    );
+                })}
+            </>
+        )}
     </div>
-  )
+);
+
 }
 
 export default Favorites

@@ -8,6 +8,7 @@
     font-weight: bolder;
     margin-top: 5em;
     overflow: auto!important;
+   
 }
 
 .favorites-station-name {
@@ -17,18 +18,22 @@
 }
 
 .favorites-trains-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 150em;
     width: 80%;
     background-color: #282c34;
     overflow-y: auto;
     padding-top: 5em;
     border-radius: 20px;
     overflow-x: hidden;
-    padding-top: 2em;
+    padding-top: 2em; */
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    background-color: white;
 
 
 }

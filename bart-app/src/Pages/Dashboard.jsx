@@ -91,7 +91,7 @@ export const Dashboard = (props) => {
 
       <div className="schedule-container">
               <div className="train-header">
-                    <div>destination</div>
+                    <div>Train</div>
                     <div className='time'>Time</div>
                     <div className='direction'>Direction</div>
                     
