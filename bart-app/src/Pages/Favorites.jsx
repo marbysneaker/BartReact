@@ -8,6 +8,7 @@ import fetchStationData from "../bart";
 import { initializeApp } from "firebase/app";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Button } from "@mui/material";
 
 const Favorites = () => {
   const { user } = UserAuth();
@@ -140,11 +141,15 @@ const Favorites = () => {
                           </div>
                         );
                       })}
+                     
                   </div>
                 </React.Fragment>
+                <Button variant="contained" onClick={fetchSched}>Remove</Button>
               </div>
+           
               );
             })}
+             
           </div>
         </>
       )}
