@@ -14,7 +14,7 @@
     text-align: center;
     width:100%;
     height: auto;
-    min-height: 80%;
+    min-height: 80% ;
     overflow-y: auto;
 }
 .favorites-station {
@@ -24,4 +24,21 @@
    color: black;
    margin: 2em;
    border-radius: 10px;
+}
+.favorites-trains-container {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.favorites-trains-container .train {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    /* height: 15em; */
+    width: 100%;
+    overflow-y: auto;
+    border-radius: 0 0 5px 5px;
+    color: red;
 }

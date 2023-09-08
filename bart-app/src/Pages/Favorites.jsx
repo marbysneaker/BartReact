@@ -122,7 +122,7 @@ const Favorites = () => {
                     {Array.isArray(station.trains) &&
                       station.trains.map((train) => {
                         return (
-                          <div className="train" key={train.destination}>
+                          <div className={`train ${train.estimate[0].color}`} key={train.destination}>
                             <div>{train.destination}</div>
 
                             {train.estimate && train.estimate[0] ? (
