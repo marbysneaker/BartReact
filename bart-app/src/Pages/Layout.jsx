@@ -2,7 +2,8 @@ import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import './Layout.css'
 import { UserAuth } from '../context/AuthContext'
-import brie from '../brie.png'
+import brie2 from '../brie2.png'
+import brie1 from '../brie1.png'
 
 
 const Layout = () => {
@@ -29,11 +30,15 @@ const Layout = () => {
         <ul>
           <li className='logo'>
             
-                <Link to="/"><img src={brie} alt=""/></Link>
+                <Link to="/"><img src={brie2} alt=""/></Link>
           </li>
+          
           <li>
             <Link to="/">Home</Link>
           </li>
+          <li>
+            <Link to="/faircalculator">Fair</Link>
+            </li>
           <li>
             <Link to="/favorites">Favorites</Link>
           </li>

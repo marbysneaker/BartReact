@@ -92,8 +92,9 @@ export const Dashboard = (props) => {
       <div className="schedule-container">
               <div className="train-header">
                     <div>Train</div>
-                    <div className='time'>Time</div>
+                    <div className='time'>Time (min)</div>
                     <div className='direction'>Direction</div>
+                    <div className='platform'>Platform</div>
                     
               </div>
               <div className="trains-container">
@@ -106,7 +107,9 @@ export const Dashboard = (props) => {
                   <div className={`train ${train.estimate[0].color}`} >
                     <div >{train.destination}</div>
                     <div className='time'>{train.estimate[0].minutes}</div>
+                    
                     <div className='direction'>{train.estimate[0].direction}</div>
+                    <div className='platform'>{train.estimate[0].platform}</div>
                     
                   </div> ))
                 }

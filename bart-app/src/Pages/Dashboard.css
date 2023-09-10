@@ -97,6 +97,7 @@
   background-color: #1a3b5d;
  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
  border-radius: 10px;
+ font-weight: bold;
    
 }
 
@@ -120,6 +121,30 @@
   text-align: center;
 
 
+}
+/* Define the animation */
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.trains-container .train:nth-child(odd) {
+    animation: slideInFromRight 2s forwards;
+}
+.trains-container .train:nth-child(even) {
+    animation: slideInFromLeft 2s forwards;
 }
 
 .YELLOW {
