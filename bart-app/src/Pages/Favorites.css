@@ -60,3 +60,9 @@
     font-weight: bold;
    
 }
+
+@media screen and (max-width: 900px) {
+    .favorites-stations-container {
+        grid-template-columns: 1fr;
+    }
+}

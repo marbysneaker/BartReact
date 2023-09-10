@@ -18,7 +18,7 @@ const bartstations = [
     {name: "bayf",
     full_name: "Bay Fair (San Leandro)"},
     {name: "bery",
-    full_name: "Berryessa / North San Jose"},
+    full_name: "Berryessa/North San Jose"},
     {name: "cast",
     full_name: "Castro Valley"},
     {name: "civc",

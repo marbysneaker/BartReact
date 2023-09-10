@@ -9,12 +9,15 @@ import { initializeApp } from "firebase/app";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Button } from "@mui/material";
+import { arrayRemove, updateDoc } from "firebase/firestore";
 
 const Favorites = () => {
   const { user } = UserAuth();
   const [favorites, setFavorites] = useState([]);
   const [stationData, setStationData] = useState([]);
   const [loadingUser, setLoadingUser] = useState(true);
+  const [forceUpdate, setForceUpdate] = useState(true);
+  
 
   const fetchSched = async () => {
     if (!favorites || favorites.length === 0) return;
@@ -26,6 +29,7 @@ const Favorites = () => {
           if (data.root && data.root.station[0]) {
             return {
               name: data.root.station[0].name,
+              abbr: data.root.station[0].abbr,
               trains: data.root.station[0].etd,
             };
           }
@@ -64,6 +68,31 @@ const Favorites = () => {
     }
   };
 
+  
+
+ const removeStation = async (abbr) => {
+   abbr = abbr.toLowerCase();
+
+      
+    console.log("remove station", abbr);
+
+    
+    const userRef = doc(db, "users", user.email);
+    console.log(userRef);
+    try {
+      await updateDoc(userRef, {
+        favorites: arrayRemove(abbr),
+      });
+    } catch (error) {
+      console.error("Error removing from favorites:", error);
+
+    }
+    await getUser();
+    await fetchSched();
+    // setForceUpdate(!forceUpdate);
+ }
+
+    
   useEffect(() => {
     const auth = getAuth(); // Get the authentication instance
 
@@ -93,7 +122,7 @@ const Favorites = () => {
   // console.log("all stations", stationData);
   // console.log(bartstations)
   console.log("favorites", favorites);
-  console.log("users", user);
+  console.log("station data", stationData);
 
   useEffect(() => {
     if (favorites && favorites.length > 0) {
@@ -144,7 +173,7 @@ const Favorites = () => {
                      
                   </div>
                 </React.Fragment>
-                <Button variant="contained" onClick={fetchSched}>Remove</Button>
+                <Button variant="contained" onClick={()=>removeStation(station.abbr)}>Remove</Button>
               </div>
            
               );
