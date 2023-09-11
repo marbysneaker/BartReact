@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React, { useState } from 'react';
 import './App.css';
-import fetchStationData from './bart';
+import {fetchStationData} from './bart';
 import bartstations from './bartstations';
 
 import { Dashboard } from './pages/Dashboard';
@@ -55,7 +55,7 @@ function App() {
         <Route path='/' element={<Layout/>}>
           <Route index element={<Dashboard stations={stations} currentStation={currentStation} setCurrentStation={setCurrentStation} setCurrentStationData={setCurrentStationData} currentStationData={currentStationData} fetchSched={fetchSched}/>}/>
 
-          <Route path='faircalculator' element={<Fair/>}/>
+          <Route path='faircalculator' element={<Fair stations={stations} />}/>
           <Route path='login' element={<Login/>}/>
           <Route path='signup' element={<Signup/>}/>
           <Route path='favorites' element={<Protectedroute><Favorites/></Protectedroute>}/>

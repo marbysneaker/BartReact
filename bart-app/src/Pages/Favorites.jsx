@@ -4,7 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import bartstations from "../bartstations";
-import fetchStationData from "../bart";
+import {fetchStationData} from "../bart";
 import { initializeApp } from "firebase/app";
 
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -58,7 +58,11 @@ const Favorites = () => {
         const favoritesData = docSnap.data().favorites;
         console.log("favorites data", favoritesData);
         if (favoritesData) {
-          setFavorites(favoritesData);
+          setFavorites(favoritesData, () => {
+            fetchSched();
+
+        }
+          );
         }
       } else {
         console.log("No such document!");
@@ -83,13 +87,14 @@ const Favorites = () => {
       await updateDoc(userRef, {
         favorites: arrayRemove(abbr),
       });
+      await getUser().then(() => {
+        fetchSched();
+      });
     } catch (error) {
       console.error("Error removing from favorites:", error);
 
     }
-    await getUser();
-    await fetchSched();
-    // setForceUpdate(!forceUpdate);
+    
  }
 
     

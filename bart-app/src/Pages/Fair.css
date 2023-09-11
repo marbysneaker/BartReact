@@ -5,7 +5,25 @@
     color: white;
     height: 100vh;
     width: 100wh;
-    margin: auto;
+    /* margin: auto; */
     text-align: center;
-    margin-top: 35%;
+   margin-top: 5%;
+    
+}
+
+/* .fair-container .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline, .fair-container #demo-simple-select-helper-label, .fair-container #demo-simple-select-helper, .fair-container .MuiSvgIcon-root{
+    color: white;
+    border-color: white;
+
+    
+} */
+
+.fair-container  {
+    background-color: white;
+    height: 80%;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    
+
 }
