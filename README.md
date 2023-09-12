@@ -1,2 +1,2 @@
 # BartReact
-BART ( Bay Area Recreational Transit ) Application
+BART ( Bay Area Rapid Transit ) Application
