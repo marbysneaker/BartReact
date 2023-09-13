@@ -20,6 +20,7 @@ const [origin, setOrigin] = useState('12th');
 const [destination, setDestination] = useState('16th');
 const [fairPrice, setFairPrice] = useState('')
 const {stations} = props;
+const [count, setCount] = useState(1);
 
 const newFair = async () => {
     const data = await fetchFairData(origin, destination);
@@ -27,6 +28,10 @@ const newFair = async () => {
     console.log("fare",data.root.fares.fare[0]["@amount"]);
     setFairPrice(data.root.fares.fare[0]["@amount"]);
     return data;
+}
+
+const handleCount = () => {
+    setCount(count+1);
 }
 
 const theme = createTheme({
@@ -43,12 +48,14 @@ const theme = createTheme({
     }
   });
 
-  console.log("fair", newFair());
+//   console.log("fair", newFair());
   console.log("origin", origin);
   return (
     <div className="fair">
         <h1>Fair calculator</h1>
-        <div className="fair-container">
+
+        {Array.from({length:count}, (_,index) =>(
+            <div className="fair-container" key={index}>
             <ThemeProvider theme={theme}>
                 <FormControl sx={{ m: 1, minWidth: 120, color: palette.secondary }}>
                 <InputLabel sx={{color: theme.palette.text.primary}} id="demo-simple-select-helper-label">Origin</InputLabel>
@@ -84,6 +91,9 @@ const theme = createTheme({
             <TextField  sx={{ m: 1, minWidth: 120,  color: palette.secondary }} id="standard-basic" value={fairPrice} label="Fair" />
             <Button sx={{ m: 1, minWidth: 120, height: 50, color: palette.secondary }} variant="contained" onClick={()=>newFair()}>Calculate</Button>
           </div>
+        )
+        )}
+          <Button sx={{ m: 1, minWidth: 120, height: 50, color: palette.secondary }} variant="contained" onClick={()=>handleCount()}>Add</Button>
     </div>
   )
 }
